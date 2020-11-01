@@ -63,7 +63,7 @@ const COURSES_DATA = [
 ];
 
 const HomeScreen = () => {
-  return <div></div>;
+  return <div>HOME SCREEN</div>;
 };
 
 export default HomeScreen;
