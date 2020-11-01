@@ -1,0 +1,10 @@
+.login-form-container {
+  padding: 20px 20px;
+}
+.login-input {
+  flex: 1;
+  margin: 0px 0px 20px;
+  height: 42px;
+  font-weight: 600;
+  font-size: 13px;
+}

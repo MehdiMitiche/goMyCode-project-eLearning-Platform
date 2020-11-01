@@ -1,0 +1,6 @@
+.img-side-container {
+  height: 100vh;
+  background-image: url("../../../assets/reading.png");
+  background-position: center;
+  background-size: cover;
+}
