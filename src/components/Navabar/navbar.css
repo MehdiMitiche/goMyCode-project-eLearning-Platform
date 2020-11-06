@@ -1,0 +1,28 @@
+.navbar-container {
+  width: 100%;
+  position: absolute;
+  top: 0vh;
+  height: 10vh;
+  z-index: 1;
+  display: flex;
+  color: white;
+}
+.navbar-logo {
+  flex: 2;
+}
+.navabar-sub-menu {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+}
+.navbar-sub-menu-item {
+  padding: 0px 20px;
+  margin: 0px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.navbar-sub-menu-item:hover {
+  color: grey;
+}

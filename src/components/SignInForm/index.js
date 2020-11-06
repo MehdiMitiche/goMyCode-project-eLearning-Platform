@@ -44,9 +44,7 @@ const SigninForm = () => {
         />
       </div>
       <div className="row">
-        <Button type="primary" size="large">
-          SUBMIT
-        </Button>
+        <Button type="primary">SUBMIT</Button>
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+.course-body-container {
+  height: fit-content;
+  background-color: #eaeef0;
+}
+.course-body-content {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  top: -60px;
+}
+.body-main {
+  flex: 2;
+  margin: 0px 8px;
+}
+.body-info {
+  flex: 1;
+  margin: 0px 8px;
+}
+.body-card-container {
+  padding: 20px 20px;
+  border-radius: 6px;
+  background-color: white;
+  margin-bottom: 20px;
+}

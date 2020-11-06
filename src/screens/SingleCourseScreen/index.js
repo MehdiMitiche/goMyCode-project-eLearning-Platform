@@ -1,7 +1,14 @@
 import React from "react";
+import CourseBody from "./CourseBody";
+import Poster from "./Poster";
 
 const SingleCourse = () => {
-  return <div>SINGLE COURSE</div>;
+  return (
+    <div>
+      <Poster />
+      <CourseBody />
+    </div>
+  );
 };
 
 export default SingleCourse;

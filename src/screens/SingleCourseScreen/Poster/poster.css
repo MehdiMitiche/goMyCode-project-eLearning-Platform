@@ -1,0 +1,44 @@
+.poster-container {
+  width: 100%;
+  background-color: #131c2b;
+  height: 95vh;
+}
+.poster-content {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+.poster-information {
+  flex: 1;
+  margin: 0px 2px;
+  min-height: 50%;
+  height: fit-content;
+}
+.poster-img {
+  flex: 1;
+  margin: 0px 10px;
+  height: 50%;
+  border-radius: 4px;
+  background-image: url("../../../assets/reading.png");
+  background-size: cover;
+  background-position: center;
+}
+.poster-sub-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e2352c;
+}
+.poster-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+}
+.poster-description {
+  font-size: 20px;
+  color: #fff;
+  margin-top: 10px;
+}
+.poster-register {
+  margin-top: 24px;
+}

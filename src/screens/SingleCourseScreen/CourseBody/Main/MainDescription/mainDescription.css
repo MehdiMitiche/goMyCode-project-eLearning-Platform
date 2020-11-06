@@ -1,0 +1,16 @@
+.main-description-title {
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.main-description-data {
+  font-size: 13px;
+  color: #5d7783;
+  margin-bottom: 30px;
+  line-height: 25px;
+}
+.main-description-hr {
+  margin-bottom: 15px;
+}
