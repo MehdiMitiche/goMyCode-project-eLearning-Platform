@@ -4,8 +4,9 @@
   font-size: 18px;
 }
 .info-list {
-  font-size: 12px;
+  font-size: 15px;
   color: #5d7783;
   line-height: 21px;
   padding: 10px;
+  text-align: justify;
 }

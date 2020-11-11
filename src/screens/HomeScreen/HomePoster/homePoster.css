@@ -1,0 +1,19 @@
+.home-poster-title {
+  flex: 1;
+  color: white;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: justify;
+}
+.home-poster-content {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+.home-poster-search {
+  width: 60%;
+  height: 55px;
+}
+.home-poster-search-btn {
+  height: 55px;
+}

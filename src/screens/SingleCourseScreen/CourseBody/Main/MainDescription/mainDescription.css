@@ -1,12 +1,15 @@
+.main-description {
+  padding: 10px 0px;
+}
 .main-description-title {
-  font-size: 18px;
+  font-size: 20px;
   color: #000;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
 .main-description-data {
-  font-size: 13px;
+  font-size: 17px;
   color: #5d7783;
   margin-bottom: 30px;
   line-height: 25px;

@@ -1,11 +1,13 @@
 import React from "react";
 import CourseBody from "./CourseBody";
-import Poster from "./Poster";
+import SingleCoursePoster from "./SingleCoursePoster";
 
 const SingleCourse = () => {
+  window.scrollTo(0, 0);
+
   return (
     <div>
-      <Poster />
+      <SingleCoursePoster />
       <CourseBody />
     </div>
   );

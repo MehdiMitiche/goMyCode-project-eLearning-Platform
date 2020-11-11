@@ -1,4 +1,6 @@
 import React from "react";
+import HomePoster from "./HomePoster";
+import HomeBody from "./HomeBody";
 
 const COURSES_DATA = [
   {
@@ -63,7 +65,12 @@ const COURSES_DATA = [
 ];
 
 const HomeScreen = () => {
-  return <div>HOME SCREEN</div>;
+  return (
+    <div>
+      <HomePoster />
+      <HomeBody />
+    </div>
+  );
 };
 
 export default HomeScreen;

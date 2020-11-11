@@ -1,0 +1,15 @@
+.home-body-container {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  min-height: 35vh;
+  background-color: #eaeef0;
+  justify-content: center;
+}
+.home-body-content {
+  justify-content: center;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 0px;
+}

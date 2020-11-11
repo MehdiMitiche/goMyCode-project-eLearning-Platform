@@ -9,7 +9,7 @@ const MainRoutes = () => {
     <>
       <Navbar />
       <Switch>
-        <Route path="/course" exact>
+        <Route path="/course/:id" exact>
           <SingleCourseScreen />
         </Route>
         <Route path="/">

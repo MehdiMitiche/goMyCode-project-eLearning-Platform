@@ -1,0 +1,35 @@
+.course-card-container {
+  width: 31%;
+  height: 70vh;
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px 5px rgba(154, 154, 154, 0.3);
+  overflow: hidden;
+}
+.course-card-img {
+  flex: 3;
+  background-color: blue;
+  background-image: url("https://miro.medium.com/max/3200/1*xdo0UBpyszvD7-7EH4TkIA.png");
+  background-size: cover;
+  background-position: center;
+}
+.course-card-info {
+  flex: 2;
+  padding: 24px;
+}
+.course-card-action {
+  flex: 1;
+}
+.course-card-title {
+  border-top: #808080 2px solid;
+  font-size: 25px;
+  font-weight: 900;
+  padding-bottom: 14px;
+}
+.course-card-description {
+  font-size: 15px;
+  line-height: 25px;
+  color: #808080;
+  text-align: justify;
+}
