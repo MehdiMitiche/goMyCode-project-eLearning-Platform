@@ -1,6 +1,7 @@
 .login-side-container {
   background-color: #151f32;
   justify-content: flex-start;
+  height: 100vh;
 }
 .login-logo {
   color: white;

@@ -2,26 +2,35 @@ import React from "react";
 import "./loginForm.css";
 import { Input, Button } from "antd";
 
-const LoginForm = ({ onChangeForm, onSubmitForm }) => {
+const LoginForm = ({ onChangeLogin, onLogin, email, password, loading }) => {
   return (
     <div className="login-form-container">
       <div className="row">
         <Input
+          onChange={(e) => onChangeLogin("email", e.target.value)}
+          value={email}
           className="login-input"
           placeholder="EMAIL"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
       <div className="row">
         <Input
+          onChange={(e) => onChangeLogin("password", e.target.value)}
+          value={password}
           className="login-input"
           placeholder="PASSWORD"
           type="password"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
       <div className="row">
-        <Button type="primary">SUBMIT</Button>
+        <Button
+          type="primary"
+          size="large"
+          onClick={() => onLogin()}
+          loading={loading}
+        >
+          SUBMIT
+        </Button>
       </div>
     </div>
   );

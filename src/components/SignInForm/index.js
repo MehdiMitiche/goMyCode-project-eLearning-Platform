@@ -2,49 +2,66 @@ import React from "react";
 import "./signinForm.css";
 import { Input, Button } from "antd";
 
-const SigninForm = () => {
+const SigninForm = ({
+  firstName,
+  lastName,
+  password,
+  email,
+  phone,
+  passwordConfirm,
+  onRegister,
+  onChangeRegister,
+}) => {
   return (
     <div className="login-form-container">
       <div className="row">
         <Input
+          onChange={(e) => onChangeRegister("firstName", e.target.value)}
+          value={firstName}
           className="login-input"
           placeholder="FIRST NAME"
-          onChange={(e) => console.log(e.target.value)}
         />
         <Input
+          onChange={(e) => onChangeRegister("lastName", e.target.value)}
+          value={lastName}
           className="login-input"
-          placeholder="FIRST NAME"
-          onChange={(e) => console.log(e.target.value)}
+          placeholder="LAST NAME"
         />
       </div>
       <div className="row">
         <Input
+          onChange={(e) => onChangeRegister("email", e.target.value)}
+          value={email}
           className="login-input"
           placeholder="EMAIL"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
       <div className="row">
         <Input
+          onChange={(e) => onChangeRegister("phone", e.target.value)}
+          value={phone}
           className="login-input"
           placeholder="PHONE NUMBER"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
       <div className="row">
         <Input
+          onChange={(e) => onChangeRegister("password", e.target.value)}
+          value={password}
           className="login-input"
-          placeholder="PHONE NUMBER"
-          onChange={(e) => console.log(e.target.value)}
+          placeholder="PASSWORD"
         />
         <Input
+          onChange={(e) => onChangeRegister("passwordConfirm", e.target.value)}
+          value={passwordConfirm}
           className="login-input"
           placeholder="PHONE NUMBER"
-          onChange={(e) => console.log(e.target.value)}
         />
       </div>
       <div className="row">
-        <Button type="primary">SUBMIT</Button>
+        <Button type="primary" size="large" onClick={() => onRegister()}>
+          SUBMIT
+        </Button>
       </div>
     </div>
   );
