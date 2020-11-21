@@ -7,7 +7,7 @@ const CourseCard = ({ title, description, img, action }) => {
     <div className="course-card-container col">
       <div
         className="course-card-img"
-        style={{ backgroundImage: `url("${img}")` }}
+        style={{ backgroundImage: `url("/assets/reading.png")` }}
       ></div>
       <div className="course-card-info">
         <div className="course-card-title">{title}</div>

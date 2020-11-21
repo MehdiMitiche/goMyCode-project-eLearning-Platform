@@ -9,8 +9,8 @@ const LoginScreen = () => {
   if (isLoggedIn()) return <Redirect to="/" />;
   return (
     <div className="login-screen-container row">
-      <LoginSide style={{ flex: 2 }} />
-      <ImgSide style={{ flex: 4 }} />
+      <LoginSide style={{ flex: 1 }} />
+      <ImgSide style={{ flex: 2 }} />
     </div>
   );
 };

@@ -16,7 +16,7 @@
 .poster-sub-title {
   font-size: 14px;
   font-weight: 600;
-  color: #e2352c;
+  color: #fbff9c;
 }
 .poster-title {
   font-size: 50px;
@@ -37,4 +37,7 @@
   border-radius: 6px;
   width: 10vw;
   height: 7vh;
+  border-color: white;
+  border-style: solid;
+  border-width: 4px;
 }

@@ -9,8 +9,6 @@
 }
 .course-card-img {
   flex: 3;
-  background-color: blue;
-  background-image: url("https://miro.medium.com/max/3200/1*xdo0UBpyszvD7-7EH4TkIA.png");
   background-size: cover;
   background-position: center;
 }

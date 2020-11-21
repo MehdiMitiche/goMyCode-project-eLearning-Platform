@@ -1,11 +1,19 @@
 import React from "react";
 import "./loginSide.css";
 import LoginCard from "../LoginCard";
+import logo from "../../../assets/go-my-code.png";
 
 const LoginSide = ({ style }) => {
   return (
     <div style={{ ...style }} className="center col login-side-container">
-      <div className="login-logo center">LOGO</div>
+      <div className="login-logo center">
+        <img
+          src={
+            "https://fabskill.com/assets/img/bus_cover/cropped/63_1565191317.webp"
+          }
+          width="200"
+        />
+      </div>
       <div className="login-card-container">
         <LoginCard />
       </div>
