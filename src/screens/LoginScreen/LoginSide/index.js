@@ -1,7 +1,6 @@
 import React from "react";
 import "./loginSide.css";
 import LoginCard from "../LoginCard";
-import logo from "../../../assets/go-my-code.png";
 
 const LoginSide = ({ style }) => {
   return (

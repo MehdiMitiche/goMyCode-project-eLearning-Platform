@@ -11,6 +11,7 @@ const SigninForm = ({
   passwordConfirm,
   onRegister,
   onChangeRegister,
+  loading,
 }) => {
   return (
     <div className="login-form-container">
@@ -46,20 +47,27 @@ const SigninForm = ({
       </div>
       <div className="row">
         <Input
+          type="password"
           onChange={(e) => onChangeRegister("password", e.target.value)}
           value={password}
           className="login-input"
           placeholder="PASSWORD"
         />
         <Input
+          type="password"
           onChange={(e) => onChangeRegister("passwordConfirm", e.target.value)}
           value={passwordConfirm}
           className="login-input"
-          placeholder="PHONE NUMBER"
+          placeholder="Password"
         />
       </div>
       <div className="row">
-        <Button type="primary" size="large" onClick={() => onRegister()}>
+        <Button
+          loading={loading}
+          type="primary"
+          size="large"
+          onClick={() => onRegister()}
+        >
           SUBMIT
         </Button>
       </div>

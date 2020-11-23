@@ -8,10 +8,10 @@ const initialState = {
   },
   register: {
     email: "",
-    firsName: "",
+    firstName: "",
     lastName: "",
     phone: "",
-    passsword: "",
+    password: "",
     passwordConfirm: "",
     error: "",
     loading: false,
