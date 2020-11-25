@@ -2,7 +2,14 @@ import React from "react";
 import "./loginForm.css";
 import { Input, Button } from "antd";
 
-const LoginForm = ({ onChangeLogin, onLogin, email, password, loading }) => {
+const LoginForm = ({
+  onChangeLogin,
+  onLogin,
+  email,
+  password,
+  loading,
+  error,
+}) => {
   return (
     <div className="login-form-container">
       <div className="row">
@@ -21,6 +28,9 @@ const LoginForm = ({ onChangeLogin, onLogin, email, password, loading }) => {
           placeholder="PASSWORD"
           type="password"
         />
+      </div>
+      <div className="row">
+        <div className="err-msg">{error}</div>
       </div>
       <div className="row">
         <Button

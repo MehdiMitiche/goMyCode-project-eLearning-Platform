@@ -11,6 +11,7 @@ const LoginSide = ({ style }) => {
             "https://fabskill.com/assets/img/bus_cover/cropped/63_1565191317.webp"
           }
           width="200"
+          alt="login-pic"
         />
       </div>
       <div className="login-card-container">

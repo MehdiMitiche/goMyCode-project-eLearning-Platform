@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginScreen from "../screens/LoginScreen";
 import MainRoutes from "./MainRoutes";
-import TestScreen from "../screens/TestScreen";
-import { isLoggedIn } from "../helpers";
 
 const index = () => {
   return (
@@ -18,7 +11,7 @@ const index = () => {
         <Route path="/login">
           <LoginScreen />
         </Route>
-        <ProtectedRoute path="/" component={TestScreen} />
+        <ProtectedRoute path="/" component={MainRoutes} />
       </Switch>
     </Router>
   );

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { SET_STATE } from "../../../redux/actions/authActions";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { registerValidate } from "../../../helpers";
+import { registerValidate, loginValidate } from "../../../helpers";
 
 const { TabPane } = Tabs;
 
@@ -17,8 +17,48 @@ const LoginCard = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { login, register } = useSelector((state) => state.auth);
-  const onLogin = () => {
+
+  const onLogin = async () => {
     //API CALL
+    try {
+      if (!loginValidate(login))
+        return dispatch({
+          type: SET_STATE,
+          payload: {
+            login: { ...login, error: "Error Filling the form" },
+          },
+        });
+      dispatch({
+        type: SET_STATE,
+        payload: { login: { ...login, loading: true } },
+      });
+      const response = await axios.post(`${API_URL}/auth/login`, login);
+      if (!response || response.status !== 200)
+        return dispatch({
+          type: SET_STATE,
+          payload: { login: { ...login, error: "Error Occured" } },
+        });
+      localStorage.setItem("e-learning-token", response.data.token);
+      localStorage.setItem("userId", response.data.data._id);
+      localStorage.setItem("email", response.data.data.email);
+      history.push("/");
+      dispatch({
+        type: SET_STATE,
+        payload: {
+          login: {
+            email: "",
+            password: "",
+            error: "",
+            loading: false,
+          },
+        },
+      });
+    } catch (err) {
+      dispatch({
+        type: SET_STATE,
+        payload: { login: { ...login, error: "Error Occured" } },
+      });
+    }
   };
 
   const onRegister = async () => {
@@ -35,6 +75,7 @@ const LoginCard = () => {
         payload: { register: { ...register, loading: true } },
       });
       const response = await axios.post(`${API_URL}/auth/register`, register);
+      console.log(response);
       if (!response || response.status !== 201)
         return dispatch({
           type: SET_STATE,

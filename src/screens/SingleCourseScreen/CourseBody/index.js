@@ -15,10 +15,10 @@ const CourseBody = () => {
         <div className="body-info">
           <CourseNumbers
             data={{
-              ["Course Number"]: "RU102JS",
+              "Course Number": "RU102JS",
               starts: "November 10, 2020",
               Ends: "December 17, 2020",
-              [`Estimated Effort`]: "3 hours per week",
+              "Estimated Effort": "3 hours per week",
             }}
           />
           <InfoList
