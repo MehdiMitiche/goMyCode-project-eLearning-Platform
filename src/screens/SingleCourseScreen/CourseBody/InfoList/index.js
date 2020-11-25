@@ -7,7 +7,7 @@ const InfoList = ({ data, title }) => {
       <div className="info-list-title">{title}</div>
       <ul className="info-list">
         {data.map((elem, i) => (
-          <li>{elem}</li>
+          <li key={i}>{elem}</li>
         ))}
       </ul>
     </div>
