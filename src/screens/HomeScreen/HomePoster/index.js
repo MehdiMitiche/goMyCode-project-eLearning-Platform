@@ -5,7 +5,7 @@ import "./homePoster.css";
 
 const HomePoster = () => {
   return (
-    <Poster style={{ height: "65vh" }}>
+    <Poster style={{ minHeight: "65vh" }}>
       <div className="home-poster-title">
         The world's largest selection of courses with new additions published
         every month !

@@ -1,14 +1,16 @@
 .home-poster-title {
   flex: 1;
   color: white;
-  font-size: 36px;
+  font-size: 2.5em;
   font-weight: 600;
-  text-align: justify;
+  text-align: center;
 }
 .home-poster-content {
   flex: 2;
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 20px;
 }
 .home-poster-search {
   width: 60%;
@@ -16,4 +18,9 @@
 }
 .home-poster-search-btn {
   height: 55px;
+}
+@media only screen and (max-width: 600px) {
+  .home-poster-title {
+    font-size: 1.8em;
+  }
 }

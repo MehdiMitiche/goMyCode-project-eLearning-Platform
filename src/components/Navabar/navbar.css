@@ -24,6 +24,23 @@
   font-weight: 600;
   transition: 0.3s;
 }
+.navbar-sub-menu-mobile {
+  padding: 0px 20px;
+  margin: 0px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  display: none;
+}
 .navbar-sub-menu-item:hover {
   color: grey;
+}
+
+@media only screen and (max-width: 750px) {
+  .navbar-sub-menu-mobile {
+    display: flex;
+  }
+  .navabar-sub-menu {
+    display: none;
+  }
 }

@@ -7,7 +7,12 @@
   height: 100%;
   display: flex;
   position: relative;
-  top: -80px;
+  top: -60px;
+}
+@media only screen and (max-width: 900px) {
+  .course-body-content {
+    flex-direction: column;
+  }
 }
 .body-main {
   flex: 2;

@@ -5,7 +5,7 @@ import Poster from "../../../components/Poster";
 
 const SingleCoursePoster = () => {
   return (
-    <Poster>
+    <Poster style={{ minHeight: "70vh" }}>
       <div className="poster-information">
         <div className="poster-sub-title">Self paced course</div>
         <div className="poster-title">Redis for JavaScript Developers</div>
