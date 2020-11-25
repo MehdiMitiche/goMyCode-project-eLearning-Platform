@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import emailValidator from "email-validator";
 
 export const isLoggedIn = () => {
   const token = localStorage.getItem("e-learning-token");
@@ -9,10 +10,13 @@ export const isLoggedIn = () => {
   } catch (err) {
     return false;
   }
+};
 
-  // GET THE TOKEN FROM THE LOCAL STORAGE
-  //IF NOT FOUND RETURN FALSE
-  //IF FOUND AND NOT VALID RETURN FALSE
-  //IF FOUND AND VALID RETURN TRUE
-  ///CHECK THE TOKEN IF VALID
+export const registerValidate = (register) => {
+  const { email, firstName, lastName, password, passwordConfirm } = register;
+  if (!email || !firstName || !lastName || !password || !passwordConfirm)
+    return false;
+  if (password !== passwordConfirm) return false;
+  if (!emailValidator(register.email)) return false;
+  return true;
 };

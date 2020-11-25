@@ -12,6 +12,7 @@ const SigninForm = ({
   onRegister,
   onChangeRegister,
   loading,
+  error,
 }) => {
   return (
     <div className="login-form-container">
@@ -20,13 +21,13 @@ const SigninForm = ({
           onChange={(e) => onChangeRegister("firstName", e.target.value)}
           value={firstName}
           className="login-input"
-          placeholder="FIRST NAME"
+          placeholder="FIRST NAME*"
         />
         <Input
           onChange={(e) => onChangeRegister("lastName", e.target.value)}
           value={lastName}
           className="login-input"
-          placeholder="LAST NAME"
+          placeholder="LAST NAME*"
         />
       </div>
       <div className="row">
@@ -34,7 +35,7 @@ const SigninForm = ({
           onChange={(e) => onChangeRegister("email", e.target.value)}
           value={email}
           className="login-input"
-          placeholder="EMAIL"
+          placeholder="EMAIL*"
         />
       </div>
       <div className="row">
@@ -51,15 +52,18 @@ const SigninForm = ({
           onChange={(e) => onChangeRegister("password", e.target.value)}
           value={password}
           className="login-input"
-          placeholder="PASSWORD"
+          placeholder="PASSWORD*"
         />
         <Input
           type="password"
           onChange={(e) => onChangeRegister("passwordConfirm", e.target.value)}
           value={passwordConfirm}
           className="login-input"
-          placeholder="Password"
+          placeholder="PASSWORD CONFIRM*"
         />
+      </div>
+      <div className="row">
+        <div className="err-msg">{error}</div>
       </div>
       <div className="row">
         <Button

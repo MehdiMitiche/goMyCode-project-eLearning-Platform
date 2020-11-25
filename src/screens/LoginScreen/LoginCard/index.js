@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { SET_STATE } from "../../../redux/actions/authActions";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { registerValidate } from "../../../helpers";
 
 const { TabPane } = Tabs;
 
@@ -22,15 +23,22 @@ const LoginCard = () => {
 
   const onRegister = async () => {
     try {
+      if (!registerValidate(register))
+        return dispatch({
+          type: SET_STATE,
+          payload: {
+            register: { ...register, error: "Error Filling the form" },
+          },
+        });
       dispatch({
         type: SET_STATE,
         payload: { register: { ...register, loading: true } },
       });
       const response = await axios.post(`${API_URL}/auth/register`, register);
       if (!response || response.status !== 201)
-        dispatch({
+        return dispatch({
           type: SET_STATE,
-          payload: { register: { ...register, error: "Err !" } },
+          payload: { register: { ...register, error: "Error Occured" } },
         });
       localStorage.setItem("e-learning-token", response.data.token);
       history.push("/");
@@ -52,7 +60,7 @@ const LoginCard = () => {
     } catch (err) {
       dispatch({
         type: SET_STATE,
-        payload: { register: { ...register, error: "Err !" } },
+        payload: { register: { ...register, error: "Error Occured" } },
       });
     }
   };

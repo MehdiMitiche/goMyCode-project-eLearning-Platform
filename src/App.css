@@ -12,3 +12,11 @@
   justify-content: center;
   align-items: center;
 }
+.err-msg {
+  width: 100%;
+  text-align: center;
+  color: #db3030;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
