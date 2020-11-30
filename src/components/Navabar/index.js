@@ -1,12 +1,15 @@
 import React from "react";
 import "./navbar.css";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
 const Nabar = () => {
+  const history = useHistory();
   return (
     <div className="navbar-container">
       <div className="navbar-logo center">
         <img
+          onClick={() => history.push("/")}
           src={
             "https://fabskill.com/assets/img/bus_cover/cropped/63_1565191317.webp"
           }

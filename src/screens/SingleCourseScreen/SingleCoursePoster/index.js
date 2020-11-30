@@ -2,8 +2,10 @@ import { Button } from "antd";
 import React from "react";
 import "./singleCoursePoster.css";
 import Poster from "../../../components/Poster";
+import { useHistory } from "react-router-dom";
 
 const SingleCoursePoster = () => {
+  const history = useHistory();
   return (
     <Poster style={{ minHeight: "70vh" }}>
       <div className="poster-information">
@@ -17,6 +19,7 @@ const SingleCoursePoster = () => {
             type="primary"
             size="large"
             className="poster-register-btn center"
+            onClick={() => history.push("/studyCourse/123")}
           >
             Register
           </Button>
