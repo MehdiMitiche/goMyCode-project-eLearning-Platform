@@ -1,74 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomePoster from "./HomePoster";
 import HomeBody from "./HomeBody";
-/*
-const COURSES_DATA = [
-  {
-    id: 1,
-    img: "/assets/test1.png",
-    title: "Introduction to Redis Data Structures",
-    shortDescription:
-      "RU101 is an introductory course, perfect for developers new to Redis. In this course, you'll learn about the data structures in Redis, and you'll see how take benifit from redis",
-    longDescription:
-      "RU101 is an introductory course, perfect for developers new to Redis. In this course, you'll learn about the data structures in Redis, and you'll see how take benifit from redis",
-    date: "01/11/2020",
-    estimatedEffort: "3 hours per week",
-    softwareRequirement: [
-      "Web Browser: Firefox 39.0+ or Chrome 43+ (Internet Explorer is currently not supported)",
-      "Operating System: Mac OS X 10.7+ 64-bit, Ubuntu 14.04+ 64-bit, or Windows 8+ (64-bit)",
-      " Non-blocked access to youtube.com and university.redislabs.com",
-    ],
-    istructorId: 0,
-    program: [
-      {
-        title: "Introduction",
-        content: [
-          "Web Overview",
-          "MERN Stack ecosystem",
-          "API and web developmemnt",
-        ],
-      },
-      {
-        title: "Master HTML/CSS",
-        content: [
-          "Web Overview",
-          "MERN Stack ecosystem",
-          "API and web developmemnt",
-        ],
-      },
-      {
-        title: "Play with JS dom !",
-        content: [
-          "Web Overview",
-          "MERN Stack ecosystem",
-          "API and web developmemnt",
-        ],
-      },
-      {
-        title: "Build real apps with React",
-        content: [
-          "Web Overview",
-          "MERN Stack ecosystem",
-          "API and web developmemnt",
-        ],
-      },
-      {
-        title: "Optmized APIs with EXPRESS JS",
-        content: [
-          "Web Overview",
-          "MERN Stack ecosystem",
-          "API and web developmemnt",
-        ],
-      },
-    ],
-  },
-];
-*/
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_STATE } from "../../redux/actions/coursesActions";
+import { API_URL } from "../../config";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
+import { useHistory } from "react-router-dom";
+
 const HomeScreen = () => {
+  const history = useHistory();
+  const { loading, error } = useSelector((state) => state.course);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatch({ type: SET_STATE, payload: { loading: true } });
+      const response = await axios
+        .get(`${API_URL}/course`, {
+          headers: {
+            authorization: localStorage.getItem("e-learning-token"),
+          },
+        })
+        .catch((err) => {
+          if (err.response.status === 401) history.push("/login");
+          return dispatch({
+            type: SET_STATE,
+            payload: { loading: false, error: err.response.data.msg },
+          });
+        });
+
+      dispatch({
+        type: SET_STATE,
+        payload: {
+          data: response.data,
+          loading: false,
+        },
+      });
+    };
+    fetchData();
+
+    return () => {
+      dispatch({ type: SET_STATE, payload: { loading: true, error: "" } });
+    };
+    // eslint-disable-next-line
+  }, []);
   return (
     <div>
       <HomePoster />
-      <HomeBody />
+      {loading ? <Loading /> : error ? <Error /> : <HomeBody />}
     </div>
   );
 };

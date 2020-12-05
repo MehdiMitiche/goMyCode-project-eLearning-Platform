@@ -6,50 +6,112 @@ import {
   AiOutlineCheckCircle,
   AiOutlineMenuUnfold,
   AiOutlineMenuFold,
-  AiOutlineDoubleRight,
 } from "react-icons/ai";
-import { FcStart } from "react-icons/fc";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Poster from "../../components/Poster";
 import { Button, Modal } from "antd";
 import into from "../../assets/undraw_education_f8ru.png";
 import success from "../../assets/undraw_completed_ngx6.png";
 import { useSelector, useDispatch } from "react-redux";
 import { SET_STATE } from "../../redux/actions/studyActions";
+import ChapterContent from "./ChapterContent";
+import axios from "axios";
+import { API_URL } from "../../config";
 
 const StudyScreen = () => {
+  const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
-  const { sidOpen, course, displayCours, progression } = useSelector(
+  const { sidOpen, course, progression, loading, error } = useSelector(
     (state) => state.study
   );
   const OpenSide = () => {
-    sidOpen === "-15%"
-      ? dispatch({ type: SET_STATE, payload: { sidOpen: "0%" } })
-      : dispatch({ type: SET_STATE, payload: { sidOpen: "-15%" } });
+    sidOpen === "-14vw"
+      ? dispatch({ type: SET_STATE, payload: { sidOpen: "0vw" } })
+      : dispatch({ type: SET_STATE, payload: { sidOpen: "-14vw" } });
   };
-  const openCourse = (id) => {
+
+  const nextChapter = async () => {
+    dispatch({
+      type: SET_STATE,
+      payload: { loading: true },
+    });
+    window.scrollTo(0, 0);
+    const response = await axios
+      .put(
+        `${API_URL}/progression/${id}`,
+        {},
+        {
+          headers: {
+            authorization: localStorage.getItem("e-learning-token"),
+          },
+        }
+      )
+      .catch((err) => {
+        console.log(err.response);
+        return dispatch({
+          type: SET_STATE,
+          payload: { error: "Sorry ! Error occured ...", loading: false },
+        });
+      });
+
+    if (!response || response.status !== 200)
+      return dispatch({
+        type: SET_STATE,
+        payload: { error: "Sorry ! Error occured ,...", loading: false },
+      });
+    dispatch({
+      type: SET_STATE,
+      payload: { loading: false, error: "" },
+    });
+    if (progression.chapterNumber < course.chapters.length - 1) {
+      return dispatch({
+        type: SET_STATE,
+        payload: {
+          progression: {
+            ...progression,
+            chapterNumber: progression.chapterNumber + 1,
+          },
+        },
+      });
+    }
     dispatch({
       type: SET_STATE,
       payload: {
-        displayCours: course.chapters.filter((el) => el.id === id),
-        sidOpen: "-15%",
+        progression: {
+          ...progression,
+          status: 1,
+          sucessModal: true,
+        },
       },
     });
   };
+
   return (
     <>
-      <Poster className="poster-content">
+      <Poster
+        style={{
+          minHeight: "10vh",
+        }}
+      >
         <div className="btn" onClick={OpenSide}>
-          {sidOpen !== "-15%" ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />}
+          {sidOpen !== "-14vw" ? (
+            <AiOutlineMenuUnfold />
+          ) : (
+            <AiOutlineMenuFold />
+          )}
         </div>
       </Poster>
       <div className="studyScreen-container center">
-        <div className="studyScreen-side center col" style={{ left: sidOpen }}>
+        <div
+          className="study-sidebar"
+          style={{ transform: `translateX(${sidOpen})` }}
+        >
           <div className="lesson-title center col">
-            {sidOpen !== "-15%" ? (
+            {sidOpen !== "-14vw" ? (
               <h3>
-                Lesson :<br></br> {course.title}
+                Lesson :
+                <div className="sidebar-course-title">{course.title}</div>
               </h3>
             ) : (
               <li className="dot2 center">
@@ -60,83 +122,70 @@ const StudyScreen = () => {
           <div className="lesson-content center col">
             {course.chapters.map((el, i) => (
               <>
-                {sidOpen !== "-15%" ? (
-                  <li className="center" key={i}>
-                    <AiOutlineCheckSquare />
-                    {el.title}
+                {sidOpen !== "-14vw" ? (
+                  <li
+                    onClick={() => {
+                      if (progression.chapterNumber > i)
+                        dispatch({
+                          type: SET_STATE,
+                          payload: {
+                            progression: {
+                              ...progression,
+                              chapterNumber: i,
+                            },
+                          },
+                        });
+                    }}
+                    className="center"
+                    key={i}
+                  >
+                    <AiOutlineCheckSquare
+                      style={{
+                        color:
+                          progression.chapterNumber < i
+                            ? "grey"
+                            : progression.chapterNumber === i
+                            ? "black"
+                            : "black",
+                      }}
+                    />
+                    <span
+                      style={{
+                        color:
+                          progression.chapterNumber < i
+                            ? "grey"
+                            : progression.chapterNumber === i
+                            ? "black"
+                            : "black",
+                      }}
+                    >
+                      {el.title.toUpperCase()}
+                    </span>
                   </li>
                 ) : (
                   <li className="dot center" key={i}>
-                    <AiOutlineCheckSquare />
+                    <AiOutlineCheckSquare
+                      style={{
+                        color:
+                          progression.chapterNumber < i
+                            ? "grey"
+                            : progression.chapterNumber === i
+                            ? "black"
+                            : "black",
+                      }}
+                    />
                   </li>
                 )}
               </>
             ))}
           </div>
         </div>
-        {displayCours.length === 0 ? (
-          <div className="course-intro center ">
-            <div className="subtitle center col">
-              <h1>{course.title}</h1>
-              <blockquote>{course.subTitle}</blockquote>
-              <img style={{ width: "400px" }} src={into} alt="img-intro"></img>
-              <Button onClick={() => openCourse(1)}>
-                Start course
-                <FcStart />
-              </Button>
-            </div>
-            <div className="whatYou center col">
-              <p className="into-parag center col">
-                <h4>what You Will LEarn </h4>
-                {course.whatYouWillLEarn}
-              </p>
-              <p className="into-parag center col">
-                <h4>what You Will Build </h4>
-                {course.whatYouWillBuild}
-              </p>
-            </div>
-          </div>
-        ) : (
-          <>
-            {displayCours.map((data, i) => (
-              <div className="course-details center col" key={i}>
-                <div className="intro-course center col">
-                  <h1>{data.title}</h1>
-                  <p>{data.content}</p>
-                </div>
-                ​
-                <Button
-                  style={{ zIndex: "9999" }}
-                  onClick={() =>
-                    progression.chapterNumber < course.chapters.length - 1
-                      ? (openCourse(data.id + 1),
-                        dispatch({
-                          type: SET_STATE,
-                          payload: {
-                            progression: {
-                              ...progression,
-                              chapterNumber: progression.chapterNumber + 1,
-                            },
-                          },
-                        }))
-                      : dispatch({
-                          type: SET_STATE,
-                          payload: {
-                            progression: {
-                              ...progression,
-                              status: 1,
-                              sucessModal: true,
-                            },
-                          },
-                        })
-                  }
-                >
-                  Next Course <AiOutlineDoubleRight />
-                </Button>
-              </div>
-            ))}
-          </>
-        )}
+        <ChapterContent
+          progression={progression}
+          nextChapter={nextChapter}
+          loading={loading}
+          error={error}
+        />
       </div>
       <Modal
         closable={false}
@@ -149,7 +198,17 @@ const StudyScreen = () => {
         visible={progression.sucessModal}
         footer={
           <Button
+            type="primary"
+            size="large"
             onClick={() => {
+              dispatch({
+                type: SET_STATE,
+                payload: {
+                  progression: {
+                    sucessModal: false,
+                  },
+                },
+              });
               history.push("/");
             }}
           >

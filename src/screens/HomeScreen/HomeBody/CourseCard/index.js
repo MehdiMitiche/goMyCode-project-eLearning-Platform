@@ -2,16 +2,16 @@ import { Button } from "antd";
 import React from "react";
 import "./courseCard.css";
 
-const CourseCard = ({ title, description, img, action }) => {
+const CourseCard = ({ title, shortDescription, imgUrl, action }) => {
   return (
     <div className="course-card-container col">
       <div
         className="course-card-img"
-        style={{ backgroundImage: `url("/assets/reading.png")` }}
+        style={{ backgroundImage: `url(${imgUrl})` }}
       ></div>
       <div className="course-card-info">
         <div className="course-card-title">{title}</div>
-        <div className="course-card-description">{description}</div>
+        <div className="course-card-description">{shortDescription}</div>
       </div>
       <div className="course-card-action center">
         <Button

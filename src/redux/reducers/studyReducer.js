@@ -40,14 +40,17 @@ const initialState = {
     ],
   },
   progression: {
-    userId: 123,
-    courseId: 123,
+    userId: "",
+    courseId: "",
     status: 0,
     chapterNumber: 0,
     sucessModal: false,
+    started: false,
   },
-  sidOpen: "-15%",
+  sidOpen: "-14vw",
   displayCours: [],
+  error: "",
+  loading: false,
 };
 const coureReducer = (state = initialState, action) => {
   switch (action.type) {

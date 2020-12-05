@@ -1,24 +1,21 @@
 .studyScreen-container {
-  height: 90vh;
-  width: 100vw;
-  justify-content: unset;
+  min-height: 90vh;
+  height: fit-content;
+  width: 100%;
   align-items: flex-start;
 }
 .poster-content {
   min-height: 10vh;
 }
-​ .studyScreen-side {
-  box-shadow: 31px 1px 35px 3px rgba(0, 0, 0, 0.11);
-  position: relative;
-  height: 100%;
-  z-index: 99;
-  width: 18%;
-  transition: all ease 1s;
+.sidebar-course-title {
+  font-size: 20px;
+  font-weight: 600;
 }
+
 .btn {
-  left: -10%;
   font-size: 2em;
-  position: relative;
+  position: fixed;
+  top: 20px;
   cursor: pointer;
   z-index: 99;
 }
@@ -48,31 +45,68 @@
   cursor: pointer;
   transition: all ease-in 1s;
 }
+.centeli {
+  width: 95%;
+}
 .course-details {
+  padding-top: 30px;
   height: 90%;
   justify-content: flex-start;
-  overflow: auto;
-  width: 96%;
-  position: fixed;
-  left: 4%;
+  width: 90%;
+  padding-bottom: 30px;
+}
+.course-details-title {
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+.course-details-body {
+  font-size: 26px;
+  text-align: justify;
+  line-height: 40px;
 }
 .intro-course {
   width: 80%;
 }
 .course-intro {
+  padding-top: 20px;
   height: 90%;
   justify-content: flex-start;
   overflow: auto;
-  width: 96%;
-  position: fixed;
-  left: 4%;
+  width: 90%;
+}
+.intro-title {
+  font-weight: 700;
+  font-size: 34px;
+}
+.intro-sub-title {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+.intro-btn {
+  font-size: 20px;
+  font-weight: 600;
+  width: fit-content;
+  height: 60px;
+  text-transform: uppercase;
+  border-radius: 4px;
 }
 .subtitle {
   width: 55%;
 }
+.intro-sec-title {
+  font-weight: 700;
+  font-size: 22px;
+}
+.intro-sec-paragraph {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: justify;
+}
 .whatYou {
   width: 45%;
-  font-style: italic;
 }
 .modal-title h3 {
   margin: 0px;
@@ -99,5 +133,17 @@
 }
 .into-parag h4 {
   color: white;
-  font-size: 1.5em;
+  font-size: 1.8em;
+}
+.study-sidebar {
+  position: fixed;
+  width: 18vw;
+  z-index: 100;
+  height: 100%;
+  transition: 0.4s;
+  left: 0px;
+}
+span {
+  padding-left: 8px;
+  font-weight: 700;
 }

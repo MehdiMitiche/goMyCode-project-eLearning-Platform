@@ -10,13 +10,17 @@ const HomeBody = () => {
   return (
     <div className="home-body-container">
       <div className="home-body-content">
-        {data.map((course, i) => (
-          <CourseCard
-            key={i}
-            {...course}
-            action={() => history.push(`/course/${course.id}`)}
-          />
-        ))}
+        {data ? (
+          <>
+            {data.map((course, i) => (
+              <CourseCard
+                key={i}
+                {...course}
+                action={() => history.push(`/course/${course._id}`)}
+              />
+            ))}
+          </>
+        ) : null}
       </div>
     </div>
   );

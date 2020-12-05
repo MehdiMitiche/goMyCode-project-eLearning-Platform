@@ -5,12 +5,16 @@ import InfoList from "./InfoList";
 import InstructorCard from "./InstructorCard";
 import Main from "./Main";
 
-const CourseBody = () => {
+const CourseBody = ({ whatYouWillLearn, whatYouWillBuild, chapters }) => {
   return (
     <div className="course-body-container center">
       <div className="course-body-content">
         <div className="body-main">
-          <Main />
+          <Main
+            whatYouWillLearn={whatYouWillLearn}
+            whatYouWillBuild={whatYouWillBuild}
+            chapters={chapters}
+          />
         </div>
         <div className="body-info">
           <CourseNumbers
